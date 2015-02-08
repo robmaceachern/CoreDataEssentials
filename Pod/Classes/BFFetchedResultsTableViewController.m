@@ -11,6 +11,8 @@
 
 @interface BFFetchedResultsTableViewController ()
 
+@property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
+
 @property (nonatomic, strong) BFTableViewFetchedResultsControllerDelegate *fetchedResultsControllerDelegate;
 
 @end
@@ -28,6 +30,8 @@
     self.fetchedResultsControllerDelegate.onUpdate = ^(UITableViewCell *cell, id object) {
         [weakSelf configureCell:cell withObject:object];
     };
+    self.dataSource = self;
+    self.fetchedResultsController = [self.dataSource fetchedResultsControllerForViewController:self];
     self.fetchedResultsController.delegate = self.fetchedResultsControllerDelegate;
     [self.fetchedResultsController performFetch:nil];
 }
@@ -53,6 +57,10 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     id<NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
     return sectionInfo.name;
+}
+
+- (NSFetchedResultsController *)fetchedResultsControllerForViewController:(UIViewController *)viewController {
+    return nil;
 }
 
 @end

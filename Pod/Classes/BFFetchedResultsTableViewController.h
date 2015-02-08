@@ -9,9 +9,16 @@
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 
-@interface BFFetchedResultsTableViewController : UITableViewController
+@protocol BFFetchedResultsViewControllerDatasource <NSObject>
 
-@property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
+@required
+- (NSFetchedResultsController *)fetchedResultsControllerForViewController:(UIViewController *)viewController;
+
+@end
+
+@interface BFFetchedResultsTableViewController : UITableViewController <BFFetchedResultsViewControllerDatasource>
+
+@property (nonatomic, assign) id <BFFetchedResultsViewControllerDatasource> dataSource;
 
 // Override this method to configure the cell with the object from the fetchedResultsController
 - (void)configureCell:(UITableViewCell *)cell withObject:(id)object;
