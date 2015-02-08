@@ -12,7 +12,6 @@
 @interface BFFetchedResultsTableViewController ()
 
 @property (nonatomic, strong) BFTableViewFetchedResultsControllerDelegate *fetchedResultsControllerDelegate;
-@property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 
 @end
 

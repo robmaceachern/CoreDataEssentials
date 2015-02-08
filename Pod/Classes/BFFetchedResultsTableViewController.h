@@ -11,6 +11,8 @@
 
 @interface BFFetchedResultsTableViewController : UITableViewController
 
+@property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
+
 // Override this method to configure the cell with the object from the fetchedResultsController
 - (void)configureCell:(UITableViewCell *)cell withObject:(id)object;
 
