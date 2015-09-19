@@ -18,6 +18,8 @@
 
 @interface BFFetchedResultsTableViewController : UITableViewController <BFFetchedResultsViewControllerDatasource>
 
+@property (nonatomic, readonly) NSFetchedResultsController *fetchedResultsController;
+
 @property (nonatomic, assign) id <BFFetchedResultsViewControllerDatasource> dataSource;
 
 // Override this method to configure the cell with the object from the fetchedResultsController
